@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Job-Application</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+    <h1>Job-Application</h1>
+    <form action="http://localhost:3000/submit" name="job-application" method="post" id="job-application" novalidate>
+        <!-- Basic-info -->
+        <fieldset name="basic-detsils">
+            <legend>Basic Detail</legend>
+            <table>
+                <tr>
+                    <td>
+                        <label for="f_name">First Name : </label>
+                        <input type="text" name="f_name" minlength="6" required />
+                    </td>
+                    <td>
+                        <label for="l_name">Last Name : </label><input type="text" name="l_name" minlength="6"
+                            required />
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="designation">Designation :</label><input type="text" name="designation" min="2" />
+                    </td>
+                    <td><label for="address_1">Address 1 : </label><textarea name="address_1" rows="1"></textarea></td>
+                </tr>
+                <tr>
+                    <td><label for="email">E-mail :</label><input type="email" name="email" required></td>
+                    <td><label for="address_2">Address 2 : </label><textarea name="address_2" rows="1"></textarea></td>
+                </tr>
+                <tr>
+                    <td><label for="phone">Phone : </label><input type="text" name="phone" required></td>
+                    <td>
+                        <label for="city">City : </label> <input type="text" name="city" required>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="gender">Gender : </label>
+                        <span id="gender-container">
+                            <input type="radio" name="gender" id="gender_male" value="male"> Male
+                            <input type="radio" name="gender" id="gender_female" value="female"> Female
+                        </span>
+                    </td>
+                    <td><label for="state">State : </label>
+                        <select name="state" id="state" required>
+                            <option value="gujrat">Gujarat</option>
+                            <option value="goa">Goa</option>
+                            <option value="xyz">Xyz</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td rowspan="2">
+                        <label for="relationship_status">RelationShip Satus :</label>
+                        <select name="relationship_status" required>
+                            <option value="single">Single</option>
+                            <option value="married">Married</option>
+                            <option value="divorced">Divorced</option>
+                        </select>
+                    </td>
+                    <td>
+                        <label for="zip_code">Zip code</label>
+                        <input type="number" name="zip_code" required>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="dob">Date of Birth : </label>
+                        <input type="date" name="dob" required>
+                    </td>
+                </tr>
+            </table>
+        </fieldset>
+        <!-- Edu - info -->
+        <fieldset>
+            <legend>Education Detail</legend>
+            <table id="edu">
+                <tr>
+                    <td colspan="2"></td>
+                    <td id="add_edu">Add</td>
+                    <td id="del_edu">Del</td>
+                </tr>
+                <tr>
+                    <th>Course</th>
+                    <th>Passing Year</th>
+                    <th>Uni / Board</th>
+                    <th>Result</th>
+                </tr>
+            </table>
+        </fieldset>
+        <!-- Work - info -->
+        <fieldset name="work_experience">
+            <legend>Work Experience</legend>
+            <table id="work">
+                <tr>
+                    <td colspan="6"></td>
+                    <td id="add_work">Add</td>
+                    <td id="del_work">Del</td>
+                </tr>
+                <tr>
+                    <th>Company Name </th>
+                    <th>Designation </th>
+                    <th>From </th>
+                    <th>To </th>
+                    <th>Annual Package</th>
+                    <th>Reason to leave</th>
+                    <th>Ref Contact NO</th>
+                    <th>ref Ct. Name</th>
+                </tr>
+            </table>
+        </fieldset>
+        <!-- Language KNown -->
+        <fieldset name="lang_known">
+            <legend>Language Known</legend>
+            <table id="lang">
+
+            </table>
+        </fieldset>
+        <!-- Technologies -->
+        <fieldset name="technologies">
+            <legend>Technologies</legend>
+            <table id="tech">
+                </tr>
+            </table>
+        </fieldset>
+
+        <!-- Reference Contact -->
+        <fieldset name="Reference_Contact">
+            <legend>Reference Contact</legend>
+            <table id="ref">
+                <tr>
+                    <td><label for="name">Name : </label><input type="text" name="ref_name_1"></td>
+                    <td><label for="contact">Contact : </label><input type="text" name="ref_con_1"></td>
+                    <td><label for="Relation">Relationship : </label><input type="text" name="ref_rel_1"></td>
+                </tr>
+                <tr>
+                    <td><label for="name">Name : </label><input type="text" name="ref_name_2"></td>
+                    <td><label for="contact">Contact : </label><input type="text" name="ref_con_2"></td>
+                    <td><label for="Relation">Relationship : </label><input type="text" name="ref_rel_2"></td>
+                </tr>
+            </table>
+        </fieldset>
+
+        <!-- Preferences -->
+        <fieldset>
+            <legend>Preferences</legend>
+            <table id="pre">
+                <tr>
+                    <td rowspan="3"><label for="preferd_location">Preferd location :</label>
+                        <select name="preferd_location" id="prefered_location" multiple size="2">
+                            <option value="city_1" >Ahm</option>
+                            <option value="city_2" >Gandhinagar</option>
+                            <option value="city_3">Gandhinagar</option>
+                            <option value="city_4">Gandhinagar</option>
+                            <option value="city_5">Gandhinagar</option>
+                            <option value="city_6">Gandhinagar</option>
+                        </select>
+                    </td>
+                    <td>
+                        <label for="notice_period">Notice Period : </label> <input type="text" name="notice_period"
+                            id="notice_period">
+                    </td>
+                    <td>
+                        <label for="dept">Department : </label>
+                        <select name="dept" id="dept">
+                            <option value="dev">Devlopment</option>
+                            <option value="qa">QA</option>
+                            <option value="ba">BA</option>
+                            <option value="dba">DBA</option>
+                        </select>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <label for="current_CTC">Current CTC : </label> <input type="text" name="current_CTC"
+                            id="current_CTC">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="expacted_CTC">Expacted CTC : </label> <input type="text" name="expacted_CTC"
+                            id="expacted_CTC">
+                    </td>
+                </tr>
+
+            </table>
+        </fieldset>
+        <div id="errorBox"></div>
+        <button type="submit">SUBMIT FORM</button>
+        <button type="reset">RESET FORM</button>
+    </form>
+    <script src="/js/script.js"></script>
+    <script src="/js/validation.js"></script>
+    <!-- <script src="script_2.js"></script> -->
+</body>
+
+</html>

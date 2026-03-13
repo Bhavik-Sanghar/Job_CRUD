@@ -1,0 +1,166 @@
+/* ===== Reset ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ===== Body ===== */
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: linear-gradient(to right, #eef2f3, #dfe9f3);
+  padding: 30px;
+}
+
+/* ===== Main Heading ===== */
+h1 {
+  text-align: center;
+  margin-bottom: 25px;
+  color: #2c3e50;
+}
+
+/* ===== Form ===== */
+form {
+  max-width: 1100px;
+  margin: auto;
+}
+
+/* ===== Fieldset ===== */
+fieldset {
+  border: none;
+  background: #ffffff;
+  padding: 20px;
+  margin-bottom: 25px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* ===== Legend ===== */
+legend {
+  font-weight: bold;
+  font-size: 18px;
+  color: #34495e;
+  padding: 0 10px;
+}
+
+/* ===== Table ===== */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+td,
+th {
+  padding: 10px;
+  vertical-align: middle;
+}
+
+th {
+  background-color: #f4f6f9;
+  font-weight: 600;
+  text-align: left;
+  border-bottom: 2px solid #ddd;
+}
+
+/* ===== Inputs ===== */
+input[type="text"],
+input[type="email"],
+input[type="number"],
+input[type="date"],
+textarea,
+select {
+  width: 100%;
+  padding: 8px 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  transition: 0.3s;
+}
+
+/* Focus Effect */
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: #3498db;
+  outline: none;
+  box-shadow: 0 0 5px rgba(52, 152, 219, 0.3);
+}
+
+/* ===== Radio & Checkbox spacing ===== */
+input[type="radio"],
+input[type="checkbox"] {
+  margin-right: 5px;
+}
+
+/* ===== Add / Delete Buttons (Table Cells) ===== */
+#add_edu,
+#add_work,
+#add_lang {
+  background-color: #d4edda;
+  color: #155724;
+  font-weight: bold;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+#del_edu,
+#del_work,
+#del_lang {
+  background-color: #f8d7da;
+  color: #721c24;
+  font-weight: bold;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+#add_edu:hover,
+#add_work:hover,
+#add_lang:hover {
+  background-color: #28a745;
+  color: white;
+}
+
+#del_edu:hover,
+#del_work:hover,
+#del_lang:hover {
+  background-color: #dc3545;
+  color: white;
+}
+
+button[type="submit"]:hover {
+  background-color: #334155;
+}
+
+button[type="reset"] {
+  background-color: transparent;
+  color: #64748b;
+  text-decoration: underline;
+}
+
+.error {
+  color: #e74c3c;
+  font-size: 13px;
+  margin-top: 5px;
+}
+
+/* ===== Multiple Select Box ===== */
+select[multiple] {
+  height: auto;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  table,
+  tr,
+  td,
+  th {
+    display: block;
+    width: 100%;
+  }
+
+  td {
+    margin-bottom: 10px;
+  }
+}
