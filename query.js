@@ -96,12 +96,12 @@ async function insertLang(data) {
 }
 
 async function insertSkill(data) {
-  const lang_insert = `INSERT INTO technologies (applicant_id,technology,level)
+  const skill_insert = `INSERT INTO technologies (applicant_id,technology,level)
     VALUES (?,?,?)`;
   for (const [skillName, details] of Object.entries(data)) {
       if (details.selected) {
       try {
-        const [res] = await db.query(lang_insert, [
+        const [res] = await db.query(skill_insert, [
           last_id,
           skillName,
           details.level
@@ -114,4 +114,56 @@ async function insertSkill(data) {
   }
 }
 
-module.exports = { insertApplicant, insertEdu, insertWork, insertLang , insertSkill};
+async function insertPL(data) {
+  const pl_insert = `INSERT INTO preferred_locations (applicant_id,location)
+    VALUES (?,?)`;
+  try {
+    const [res] = await db.query(pl_insert, [
+      last_id,
+      data
+    ]);
+    console.log(`location added`);
+  } catch (err) {
+    throw err;
+  }
+}
+
+// ref_name_1: '',
+//   ref_con_1: '',
+//   ref_rel_1: '',
+//   ref_name_2: '',
+//   ref_con_2: '',
+//   ref_rel_2: '',
+
+
+
+async function insertRef(data) {
+  const ref_insert = `INSERT INTO references_contact (applicant_id,name,contact,relation)
+    VALUES (?,?,?,?)`;
+  try {
+    const [res] = await db.query(ref_insert, [
+      last_id,
+      data.ref_name_1,
+      data.ref_con_1,
+      data.ref_rel_1
+    ]);
+    console.log(`Ref 1 added`);
+  } catch (err) {
+    throw err;
+  }
+
+  try {
+    const [res] = await db.query(ref_insert, [
+      last_id,
+      data.ref_name_2,
+      data.ref_con_2,
+      data.ref_rel_2
+    ]);
+    console.log(`Ref 2 added`);
+  } catch (err) {
+    throw err;
+  }
+}
+
+
+module.exports = { insertApplicant, insertEdu, insertWork, insertLang , insertSkill , insertPL , insertRef};

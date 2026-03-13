@@ -6,7 +6,9 @@ const {
   insertEdu,
   insertWork,
   insertLang,
-  insertSkill
+  insertSkill,
+  insertPL,
+  insertRef
 } = require("./query");
 const e = require("express");
 
@@ -42,17 +44,21 @@ app.post("/submit", async (req, res) => {
   // console.log(langs);
   let lang_insert = await insertLang(langs);
 
-
   let skill = req.body.technologies;
   // console.log(skill);
   let skill_insert = await insertSkill(skill);
 
-
   let preferd_location = req.body.preferd_location;
-  for (const pl of preferd_location){
-    let pl_insert = await insertPL(pl);
+  if (Array.isArray(preferd_location)) {
+    for (const pl of preferd_location) {
+      let pl_insert = await insertPL(pl);
+    }
+  }
+  else{
+    let insert_one_pl = await insertPL(preferd_location);
   }
 
+  let ref_insert = await insertRef(formData);
 
   console.log(`Data insertion done`);
   res.redirect("/");
