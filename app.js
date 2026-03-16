@@ -8,9 +8,12 @@ const {
   insertLang,
   insertSkill,
   insertPL,
-  insertRef
+  insertRef,
 } = require("./query");
-const e = require("express");
+
+const { getData } = require("./fetchdata");
+
+const { userDel } = require("./delete.js");
 
 const app = express();
 const PORT = 3000;
@@ -23,6 +26,19 @@ app.get("/", (req, res) => {
   res.render("index");
 });
 
+app.get("/view", async (req, res) => {
+  let id = req.query.id;
+  const db_data = await getData(id);
+  console.log(db_data);
+  res.render("main", { db_data });
+});
+
+app.get("/delete-applicant", async (req, res) => {
+  let id = req.query.id;
+  const del_user = await userDel(id);
+  res.redirect("/view");
+});
+
 app.post("/submit", async (req, res) => {
   const formData = req.body;
 
@@ -31,13 +47,17 @@ app.post("/submit", async (req, res) => {
   let insert = await insertApplicant(formData);
 
   let edu_data = req.body.education;
-  for (const e of edu_data) {
-    let edu_insert = await insertEdu(e);
+  if (edu_data) {
+    for (const e of edu_data) {
+      let edu_insert = await insertEdu(e);
+    }
   }
 
   let work_data = req.body.work;
-  for (const w of work_data) {
-    let work_insert = await insertWork(w);
+  if (work_data) {
+    for (const w of work_data) {
+      let work_insert = await insertWork(w);
+    }
   }
 
   let langs = formData.languages;
@@ -53,8 +73,7 @@ app.post("/submit", async (req, res) => {
     for (const pl of preferd_location) {
       let pl_insert = await insertPL(pl);
     }
-  }
-  else{
+  } else {
     let insert_one_pl = await insertPL(preferd_location);
   }
 

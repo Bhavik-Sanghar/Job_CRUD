@@ -1,25 +1,26 @@
 const db = require("./db");
-const data = [];
+// const dataMap = ;
 
 async function getData(id) {
-    const query1 = `select first_name, last_name, designation ,address1, address2, email, phone, city, state, zip_code, gender ,relationship_status, dob, notice_period, department, current_ctc, expected_ctc from applicants`    
+    data = []
+    const query1 = `select applicant_id, first_name, last_name, designation ,address1, address2, email, phone, city, state, zip_code, gender ,relationship_status, dob, notice_period, department, current_ctc, expected_ctc from applicants`    
     const [rows] = await db.query(query1);
     
-    const query2 = `select applicant_id,course,passing_year,university,result from education group by applicant_id`;
-    const [rows2 ] = await db.query(query2);
+    // const query2 = `select applicant_id,course,passing_year,university,result from education group by applicant_id`;
+    // const [rows2 ] = await db.query(query2);
     
     // console.log(rows);
     for( r of rows){
         data.push(r);
     }
+    return data;
 
     // eduction = []
     console.log(rows2);
     // console.log(data);
 } 
 
-getData(1);
-
+module.exports = {getData}
 
 // async function getAllApplicants() {
 //     // 1. Fetch everything from all tables in parallel
